@@ -151,7 +151,7 @@ ip dhcp pool CAMERA8
 host 10.52.50.8 255.255.255.0
 client-identifier 001a.070a.1ffa
 
-!!cisco unified call manager Express command
+!!cisco unified call manager Express command (OPEN TELNET---------)
 !@@@CUCM-M
 config t
    hostname CUCM-52
@@ -318,7 +318,7 @@ dial-peer voice 82 Voip
  session target ipv4:10.82.100.8
  codec g711ULAW
 
-@@@@@@
+@@@@@@ Lipat Console to edge
 !@@@EDGE ROUTE CONFIG
 config t
    hostname EDGE-52
@@ -388,8 +388,8 @@ end
 
 !How to Static Route windows Server:
 cmd
-route  add   10.0.0.0   mask   255.0.0.0    10._.1.4
-route  add  200.0.0.0   mask  255.255.255.0   10._.1.4
+route  add   10.0.0.0   mask   255.0.0.0    10.52.1.4
+route  add  200.0.0.0   mask  255.255.255.0   10.52.1.4
 
 ********************************************
 
