@@ -1,6 +1,32 @@
 DNS IPv4: verizon.com.ph
 DNS IPv6: epldt.com.ph
 
+Cybersecurity Job Interview Questions:
+What is CIA?
+Confidentiality: 
+ - Data is encrypted: Using MD5, DES, AES128, AES256, RSA
+Integrity: 
+ - Data is not altered: Using hash  - like SHA1 & SHA256
+Availability:
+ - Data is protected thru backup
+Confidentiality Demo: 
+@COREbaba
+conf t
+ username admin privilege 15 secret pass
+ username jasper privilege 15 secret C1sc0123
+ username anon privilege 15 secret password
+ line vty 0 14
+ login local
+ end
+
+Encrypt Cisco Traffic using SSH.
+@COREBABA
+conf t
+ ip domain-name cisco.com
+ crypto key generate rsa
+  !--> ? 1024
+ ip ssh version 2
+
 TASK1: Cisco Security Fundamentals.
 cmd
 ping 10.k.1.10
@@ -41,9 +67,16 @@ CONFIG T
 no logging console
 Int Gi 2
 no shut
-ip add 192.168.102.11 255.255.255.0
+ip add 192.168.102.12 255.255.255.0
+
+@VPNJP & VPNPH - para hindi sipain
+conf t
+ line vty 0 14
+  exec-timeout 0 0 
+  end
+
 @telnet use secureCRT: telnet 192.168.108.5
-in SEcureCRT, Paste This:
+in SEcureCRT, Paste This in VPNPH:
 config t
 IP ROUTE 0.0.0.0  0.0.0.0 208.8.8.2
 ip name-server 8.8.8.8 1.1.1.1
@@ -54,6 +87,24 @@ ip add 208.8.8.11 255.255.255.0
 int gi 3
 no shut
 ip add 192.168.103.11 255.255.255.0
+end 
+sh ip int br
+
+
+@telnet use secureCRT: telnet 192.168.108.5
+in SEcureCRT, Paste This in VPNJP:
+config t
+IP ROUTE 0.0.0.0  0.0.0.0 208.8.8.2
+ip name-server 8.8.8.8 1.1.1.1
+ip domain-lookup
+int gi 1
+no shut
+ip add 208.8.8.12 255.255.255.0
+int gi 3
+no shut
+ip add 192.168.103.12 255.255.255.0
+end 
+sh ip int br
 
 
 ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
@@ -100,39 +151,39 @@ end
 
 Task1.2: block admu.edu.ph, dlsu.edu.ph, ccp.edu.ph, ue.edu.ph
 
-ping www.dlsu.edu.ph 172.67.14.0   104.22.36.0
+ping www.dlsu.edu.ph 172.67.14.0   104.22.0.0
 ping www.ccp.edu.ph 50.6.160.0     
 ping www.feu.edu.ph 184.168.125.0  
 ping  www.ue.edu.ph 155.137.92.0  
-ping  www.yourschool.edu.ph = _________
+ping  www.yourschool.edu.ph = 23.111.150.0
 config t
 NO ip access-list standard NOISKUL
 ip access-list standard NOISKUL
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
+DENY   172.67.14.0   0.0.255.255
+DENY   104.22.0.0    0.0.255.255
+DENY   50.6.0.0      0.0.255.255
+DENY   184.168.0.0   0.0.255.255
+DENY   155.137.0.0   0.0.255.255
+DENY   23.111.150.0  0.0.255.255
 Permit Any
+Conf t
 Int Gi 1
- ip access-group NOISKUL in
+ NO ip access-group NOISKUL in
 end
 YOUR COMPANY IS HAS VERY LOW INTERNET SPEED, BEC OF TORRENTS:
-www.thepiratebay.org
-www.limetorrents.com
-www.freeanimeonline.com
-www.torlock2.com
-www.hentaisites.com
-www.iptorrents.com
+www.thepiratebay.org     104.21.48.1
+www.limetorrents.com     172.67.203.31
+www.freeanimeonline.com  13.248.169.4
+www.torlock2.com         104.21.48.1
+www.hentaisites.com      104.21.30.199
+www.iptorrents.com       104.21.64.1
 
 config t
 NO ip access-list standard NOTORS
 ip access-list standard NOTORS
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
+DENY   104.21.0.0   0.0.255.255
+DENY   172.67.0.0   0.0.255.255
+DENY   13.248.0.0   0.0.255.255
 Permit Any
 Int Gi 1
  ip access-group NOTORS in
@@ -267,18 +318,18 @@ ip http secure-server
 !Make Ping EASY
 ip host www.web310.com 192.168.103.10
 ip host www.web311.com 192.168.103.11
-ip host pc 10.m.1.10
-ip host cm 10.m.100.8
-ip host cm2 10.m.100.9
-ip host p1 10.m.100.101
-ip host p2 10.m.100.102
-ip host c6 10.m.50.6
-ip host c8 10.m.50.8
-ip host sw 10.m.1.4
-ip host ed 10.m.m.1
+ip host pc 10.52.1.10
+ip host cm 10.52.100.8
+ip host cm2 10.52.100.9
+ip host p1 10.52.100.101
+ip host p2 10.52.100.102
+ip host c6 10.52.50.6
+ip host c8 10.52.50.8
+ip host sw 10.52.1.4
+ip host ed 10.52.52.1
 
 TASK7: Enter the World of BlueTeam: Protect vs Redteam: Attack, 
-BlueTeam: UTM: unified Threat management:
+BlueTeam: UTM: Unified Threat management:
 1. firewall
 2. VPN
 3. EnterpriseAnti-Virus
@@ -299,7 +350,7 @@ tcp,udp,icmp,IP     Any      web310/11
 Config t
 service timestamps log datetime
 service timestamps debug datetime
-logging 10.m.1.10
+logging 10.52.1.10
 logging trap 5
 NO IP access-list Extended FWP1
 IP access-list Extended FWP1
@@ -314,7 +365,7 @@ IP access-list Extended FWP1
 REMOVE FIREWALL:
 CONfig t
  Int Gi 3
-  NO ip access-group FWP1 in
+NO ip access-group FWP1 in
 end
 
 TAKASSSSSSSSG:  control shift 6 bitaw X
@@ -324,32 +375,38 @@ www.web310.com open only ssh,dns, http
 www.web311.com open only telnet, ssh, https, ping/icmp => 7lines
   GOLDEN  FIREWALL FORMULA:  paloalto,fortinet,cisco,checkpoint.
    protocol         hacker    victim       port
+   data = tcp
+   voip = udp
+   ping = icmp
+   all traffic = ip
 config t
 NO IP access-list Extended FWP2
 IP access-list Extended FWP2
- Permit tcp Any host www.web310.com eq __ log
- Permit tcp Any host www.web310.com eq __ log
- Permit tcp Any host www.web310.com eq __ log
- Permit tcp Any host www.web311.com eq __ log
- Permit tcp Any host www.web311.com eq __ log
- Permit tcp Any host www.web311.com eq __ log 
- Permit ___  Any host www.web311.com log
+ Permit tcp Any host www.web310.com eq 22 log
+ Permit tcp Any host www.web310.com eq 53 log
+ Permit tcp Any host www.web310.com eq 80 log
+ Permit tcp Any host www.web311.com eq 23 log
+ Permit tcp Any host www.web311.com eq 22 log
+ Permit tcp Any host www.web311.com eq 443 log 
+ Permit icmp  Any host www.web311.com log
  Int Gi 3
   ip access-group FWP2 in
 REMOVE FIREWALL:
 CONfig t
  Int Gi 3
-  ip access-group FWP2 in
+ NO ip access-group FWP2 in
 end
 
 ex.3: you are the admin for SUPERPRANING pogo sites:
-www.web310.com open only 443
-www.web311.com open only ping
+www.web310.com open only HTTPS, domain
+www.web311.com open only ping,  ssh -> 4 lines
 config t
 NO IP access-list Extended PRANING3
 IP access-list Extended PRANING3
- Permit tcp Any host www.web310.com eq __ log
- Permit ___  Any host www.web311.com log
+ Permit tcp Any host www.web310.com eq 443 log
+ Permit tcp Any host www.web310.com eq 53 log
+ Permit tcp Any host www.web311.com eq 22 log
+ Permit icmp Any host www.web311.com log
 Int Gi 3
   ip access-group PRANING3 in
 
@@ -369,11 +426,11 @@ Interface Gi 3
  ip access-group Policy1 in
  do sh ip access-list Policy1
 
-EX.2 CREATE A FIREWALL POLICY NAMED PROWEBAPP2 TO OPEN
-WWW.WEB8.COM HAS HTTPS,PING AS OPEN
-WWW.WEB9.COM HAS HTTPS,PING OPEN
+EX.2 CREATE A FIREWALL POLICY NAMED PROWEBAPP2 TO ALLOW: Like cia.gov
+WWW.WEB310.COM HAS HTTPS, HTTP, PING AS OPEN
+WWW.WEB311.COM HAS HTTPS,PING OPEN  --> 5 LINES
 formula:       PROTOCOL      HACKER      VICTIM       PORT:
-       tcp, udp, icmp, IP    any       web8,web9
+       tcp, udp, icmp, IP    any       web10,web11
 Ports: 
 7/tcp   open  echo, 
 9/tcp   open  discard
@@ -467,14 +524,15 @@ config t
 ntp server 216.239.35.8
 end
 show ntp associations
-GIVE IP ADDRESS TO LINUX BLDGONE AND BLDGTWO:
+GIVE IP ADDRESS TO LINUX BLDGTWO AND BLDGTHREE:
+BLDG2:
 sudo su
-bldg1:
-ifconfig eth0 192.168.103.11 netmask 255.255.255.0 up
-route add default gw 192.168.103.8
-bldg2:
-ifconfig eth0 192.168.103.12 netmask 255.255.255.0 up
-route add default gw 192.168.103.8
+ifconfig eth0 192.168.103.22 netmask 255.255.255.0 up
+route add default gw 192.168.103.11
+bldg3:
+sudo su
+ifconfig eth0 192.168.103.23 netmask 255.255.255.0 up
+route add default gw 192.168.103.11
 ping 8.8.8.8   1.1.1.1  4.2.2.2  8.8.4.4
 
 TASK9: NAT: NETWORK ADDRESS TRANSLATION SERVICE:
@@ -507,11 +565,13 @@ ip nat INSIDE
 int gi 3
 ip nat INSIDE
 no access-list 8
-access-list 8 permit 10.10.10.0 0.0.0.255
+access-list 8 permit 192.168.102.0 0.0.0.255
 access-list 8 permit 192.168.103.0 0.0.0.255
 ip nat inside source list 8 interface Gi 1 overload
-ip nat inside source static 10.10.10.100 208.8.8.69
-ip nat inside source static 192.168.103.100 208.8.8.88
+ip nat inside source static 192.168.103.22 208.8.8.69
+ip nat inside source static 192.168.103.23 208.8.8.88
+ip nat inside source static 192.168.103.24 208.8.8.101
+ip nat inside source static 192.168.103.25 208.8.8.77
 end
 FW-VPN-PH#show ip nat translations 
 Pro  Inside global         Inside local          Outside local         Outside global
