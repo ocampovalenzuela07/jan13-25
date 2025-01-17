@@ -249,6 +249,7 @@ TASK5: HOW TO SPOT A VERY HEALTHY SWITCH?
 super healthy: "all flashing green."
 amber/orange: needs help. - you are protected
 
+PAANO MAG NAKAW LEGALLY: 
 create vlans,
 transfer ports to vlans
 delete the vlan
@@ -273,7 +274,7 @@ config t
 spanning-tree vlan 1-999
 end
 
-TASK7: HOW TO BECOME A WORLD-CLASS NETWORK ENGINEER
+TASK7: HOW TO BECOME A WORLD-CLASS NETWORK ENGINEER // 3 YEARS EXPERIENCE
 SPECIALIZING IN SWITCH:
 Master the 4 super Hereos of Switching
 Qpid: 802.1Q:trunking
@@ -286,7 +287,7 @@ WonderWoman: 802.1w: rapidSTP
 SuperMan: 802.1s: MiSTP
 "Protect Many Switches at the same time!"
 
-TASK8: ACCESS PORTS VS TRUNK PORTS: lab mo sa exam.
+TASK8: ACCESS PORTS VS TRUNK PORTS: LAB MISMO SA EXAM!!!!!!!!!!!!!!!!!! STED SMT STAV
 +
 TAAS/BABA:
 config t
@@ -343,7 +344,7 @@ spanning-tree Mode Rapid-pvst
 do sh spanning-tree vlan 1
 configure 802.1w/RapidSTP:
 
-TAAS/d1: RootBridge: laspagin si Wonderwoman
+TAAS/d1: (must edit ports): RootBridge: laspagin si Wonderwoman
 config t
 spanning-tree Mode Rapid-pvst
 spanning-tree BackBoneFast
@@ -363,10 +364,10 @@ end
 #sh int status err-disabled 
 TAAS: bounce/UP/down, bring BACK TO LIFE.
 config t
-int fa 0/3
+int fa 0/1
  shut
  no shut
-int fa 0/7
+int fa 0/5
  shut
  no shut
 end
@@ -490,7 +491,7 @@ config t
 hostname PLDT-ITO
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.52.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -508,7 +509,7 @@ COREBABA/GLOBE:
 config t
 hostname GLOBE-ITO
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.52.1.6
 standby 1 preempt
 standby 1 Priority 100
 end
@@ -552,6 +553,15 @@ Int Range fa0/10-12
  channel-protocol Lacp
  do sh etherchannel summary
  do sh int po1 | inc BW
+
+
+!ANG TAONG SIGURISTA, KAILANGAN MAG TRUNK | USUALLY INHERITED AND TRUNK.
+conf t
+int port-channel 1
+switchport trunk encaps dotq1
+switchport mode trunk
+switchport trunk allowed vlan 1-100
+end
 
 TASK18: HOW TO RETAIN ALL THE INFORMATION:
 HOW TO GET CERTIFIED IN 2025!!!!
